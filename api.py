@@ -5,6 +5,11 @@ import tensorflow as tf
 import numpy as np
 import json
 import os
+import warnings
+
+# Suppress TensorFlow warnings
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+warnings.filterwarnings('ignore')
 
 # Inisialisasi FastAPI
 app = FastAPI()
