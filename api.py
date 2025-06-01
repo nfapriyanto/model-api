@@ -8,8 +8,15 @@ import os
 import warnings
 
 # Suppress TensorFlow warnings
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress all TF logs
+os.environ['CUDA_VISIBLE_DEVICES'] = ''   # Disable CUDA completely
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0' # Disable oneDNN warnings
+
+# Suppress Python warnings
 warnings.filterwarnings('ignore')
+
+# Additional TensorFlow logging suppression
+tf.get_logger().setLevel('ERROR')
 
 # Inisialisasi FastAPI
 app = FastAPI()
