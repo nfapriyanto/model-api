@@ -6,6 +6,8 @@ import numpy as np
 import json
 import os
 
+os.environ["CUDA_VISIBLE_DEVICES"] = ""
+
 # Inisialisasi FastAPI
 app = FastAPI()
 
