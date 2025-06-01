@@ -6,6 +6,7 @@ import numpy as np
 import json
 import os
 
+# Nonaktifkan GPU untuk menghindari masalah di Render
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
 # Inisialisasi FastAPI
