@@ -1,9 +1,3 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-from transformers import TFXLMRobertaForSequenceClassification, XLMRobertaTokenizer
-import tensorflow as tf
-import numpy as np
-import json
 import os
 import warnings
 
@@ -14,6 +8,13 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0' # Disable oneDNN warnings
 
 # Suppress Python warnings
 warnings.filterwarnings('ignore')
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+from transformers import TFXLMRobertaForSequenceClassification, XLMRobertaTokenizer
+import tensorflow as tf
+import numpy as np
+import json
 
 # Additional TensorFlow logging suppression
 tf.get_logger().setLevel('ERROR')
