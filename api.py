@@ -1,10 +1,20 @@
+import os
+import warnings
+
+# Suppress TensorFlow warnings
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress all TF logs
+os.environ['CUDA_VISIBLE_DEVICES'] = ''   # Disable CUDA completely
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0' # Disable oneDNN warnings
+
+# Suppress Python warnings
+warnings.filterwarnings('ignore')
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import TFXLMRobertaForSequenceClassification, XLMRobertaTokenizer
 import tensorflow as tf
 import numpy as np
 import json
-import os
 
 # Nonaktifkan GPU untuk menghindari masalah di Render
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
