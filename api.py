@@ -41,6 +41,11 @@ class InputData(BaseModel):
     keparahan: str
     riwayat: str
 
+# Health check endpoint
+@app.get("/")
+def read_root():
+    return {"message": "FastAPI is running!", "status": "healthy"}
+
 # Endpoint prediksi
 @app.post("/predict")
 def predict(data: InputData):
@@ -78,8 +83,8 @@ def predict(data: InputData):
 if __name__ == "__main__":
     import uvicorn
     
-    # Tentukan host berdasarkan environment
-    node_env = os.getenv("NODE_ENV", "development")
-    host = "localhost" if node_env != "production" else "0.0.0.0"
+    # Konfigurasi untuk Render
+    port = int(os.getenv("PORT", 8000))
+    host = "0.0.0.0"  # Wajib untuk Render
     
-    uvicorn.run("api:app", host=host, port=8000, reload=True)
+    uvicorn.run("api:app", host=host, port=port, reload=False)
