@@ -10,6 +10,7 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0' # Disable oneDNN warnings
 warnings.filterwarnings('ignore')
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from transformers import TFXLMRobertaForSequenceClassification, XLMRobertaTokenizer
 import tensorflow as tf
@@ -21,6 +22,15 @@ os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
 # Inisialisasi FastAPI
 app = FastAPI()
+
+# Tambahkan CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Izinkan semua origin
+    allow_credentials=True,
+    allow_methods=["*"],  # Izinkan semua HTTP methods
+    allow_headers=["*"],  # Izinkan semua headers
+)
 
 # Load model + tokenizer dari Hugging Face (repo privat/public)
 model_name = "Raihan2212/SensecheckCapstone"
