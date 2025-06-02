@@ -86,9 +86,9 @@ def predict(data: InputData):
     })
 
     return {
-        "diagnosis": f"{result['diagnosis']} ({confidence_percent}%)",
+        "diagnosis": f"{result['diagnosis']}",
         "saran": result["saran_penanganan"],
-        "confidence": confidence
+        "confidence": f"{confidence_percent}%"
     }
 
 if __name__ == "__main__":
